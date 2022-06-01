@@ -1,0 +1,17 @@
+.cards{
+    padding: 15px;
+    font-size: 15px;
+    text-decoration: none;
+    color: darkgray;
+    display: inline-block;
+    
+}
+
+.cards:hover{
+    
+    background-color: #F8DFD1 ;
+    color: white;
+    border-radius: 2%;
+    padding: 10px;
+    
+}
