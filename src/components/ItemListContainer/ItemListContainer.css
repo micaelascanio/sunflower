@@ -1,8 +1,9 @@
-.App-header {
-    font-size: 30px;
+.loader{
+    font-size: 50px;
     text-align: center;
     background-color: white;
     -webkit-text-stroke: 1px #C3A492;
     color: transparent;
+    padding: 20px;
+    margin: 15px;
 }
-

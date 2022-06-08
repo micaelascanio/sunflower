@@ -1,29 +1,53 @@
-import { getPlants } from "../asyncmock"
+import { getProducts, getProductsByCategory } from "../asyncmock"
 import { useState, useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
+import './ItemListContainer.css';
 
-/* promesa que trae las plantas como productos */ 
+ 
+
+/* promesa que trae los productos */ 
 
 
 const ItemListContainer = (props) => {
 
-    const [allPlants, setPlants] = useState([])
+    const [allProducts, setProducts] = useState([])
+
+    const [loading, setLoading] = useState (true)
+
+    const {categoryId} = useParams ()
+
 
     useEffect(() => {
-        getPlants().then(response => {
-            setPlants(response)
+
+        setLoading(true)
+
+        if(!categoryId) {
+        getProducts().then(response => {
+            setProducts(response)
+        }).finally(() => {
+            setLoading (false)
         })
-    }, [])
+        } else{
+            getProductsByCategory(categoryId).then(response =>{
+                setProducts(response)  
+            }).finally(() => {
+                setLoading (false)
+            })
+        }
 
+    }, [categoryId])
 
+    if (loading) {
+        return <h2 className="loader">Loading...</h2>
+    }
 
     return (
-        <div className="item-list-container">
+        <div className="App-header">
             
             <h1>{props.title}</h1>
             <h3 className="greeting">{props.greeting}</h3>
-            < ItemList allPlants={allPlants}/>
-           
+            < ItemList allProducts={allProducts}/>            
         </div>
         
     )

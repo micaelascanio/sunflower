@@ -1,0 +1,79 @@
+
+.navigation-menu{
+    margin: 20px;
+}
+
+ul{
+   list-style: none;
+   text-decoration: none;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-evenly;
+      
+}
+
+li{
+  
+   padding: 15px;
+   font-size: 15px;
+   text-decoration: none;
+   color: darkgray;
+   
+}
+
+.navItem{
+   text-decoration: none;
+   text-decoration-color: none;
+   color: darkgray;
+   padding: 10px;
+   font-weight: lighter;
+}
+
+.navItem:hover{
+   background-color: #C3A492 ;
+   color: white;
+   border-radius: 5px;
+   text-decoration: none;
+   padding: 10px;
+   font-weight: bold;
+   
+}
+
+.navActiveItem{
+   background-color: #C3A492 ;
+   color: white;
+   border-radius: 5px;
+   text-decoration: none;
+   padding: 10px;
+   font-weight: bold;
+   
+}
+
+.greeting{
+   font-size: 25px;
+   color: #C3A492;
+}
+
+.buttonSearch{
+    background-color: #C3A492 ;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    border-color: #C3A492;
+}
+
+.inputSearch{
+    background-color: white ;
+    color: #C3A492;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.Icon{
+    color: #C3A492;
+    border-radius: 1px;
+    padding: 5px;
+    text-decoration: none;
+    text-decoration-color: none;
+}
