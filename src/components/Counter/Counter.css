@@ -3,7 +3,23 @@
     text-align: center;
     background-color: white;
     -webkit-text-stroke: 1px #C3A492;
-    color: transparent;
+    color: #C3A492;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    
   
 }
 
+.buttonCounter{
+    border-color:#C3A492 ;
+    border-radius: 10px;
+    padding: 7px;
+    
+}
+.buttonCounter:hover{
+    background-color:#C3A492 ;
+    color: white;
+    font-weight: bolder;
+}

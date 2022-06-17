@@ -1,31 +1,34 @@
 import {useState} from 'react';
 import './Counter.css'
 
-export default function App () {
-    const [counter, setCounter] = useState(0)
+/*export default function App () {*/
 
-    const add = () => {
-        setCounter (previous => previous + 1)
-    }
+const CounterButton = ({ onAdd, stock, initial = 0 }) => {
 
-    const rest = () => {
-        setCounter (previous => previous - 1) 
-    }
-
-    /*const clean = () => {
-        setCounter (initialValue)
-    }*/
-
-    return (
-        <div className="Counter">
-            <h3>Selector</h3>
+    const [counter, setCounter] = useState(initial)
+    
+        const add = () => {
+            
+        if (counter < stock) setCounter (counter + 1)
+        }
+    
+        const rest = () => {
+            if (counter > 0) setCounter (counter - 1) 
+        }
+    
+    
+     return (
             <div>
-                <button onClick = {add}>+</button>
-                <h2>{counter}</h2>
-                <button onClick = {rest}>-</button>
+                <div className="Counter">
+                    <button onClick = {rest}  className="buttonCounter"> - </button>
+                    <h2> {counter} </h2>
+                    <button onClick = {add} className="buttonCounter"> + </button>
+                    <button onClick = {() => onAdd (counter)} className="buttonCounter"> Add to cart </button>
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+    
+    }
 
 
+export default CounterButton

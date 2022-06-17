@@ -15,7 +15,5 @@ Luego, correr el siguiente comando para instalar las dependencias, en la carpeta
 Una vez completa la instalación, se deberá correr el siguiente comando para inicializar la app y poder así, ejecutar el servidor de desarrollo:
 ### `npm start`
 
-
 ## Gif de navegación
-
 ![](sunflowerGif.gif)

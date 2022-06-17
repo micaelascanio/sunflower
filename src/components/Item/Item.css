@@ -87,3 +87,12 @@
     text-decoration-line: underline;
 }
 
+.finishShopping{
+    font-size: 30px;
+    text-align: center;
+    color: #C3A492;
+    padding: 20px;
+    margin: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
