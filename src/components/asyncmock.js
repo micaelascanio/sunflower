@@ -8,7 +8,7 @@ const allProducts = [
         name: 'Ctenanthe',
         price: `$25`,
         description: "Being plants that come from tropical forests, the situation and care must be as similar as possible, for this we will not put them in the sun. The substrate or soil (peat, sand and decomposed leaves) must be loose, fertile and with good drainage. The ambient humidity must be high and in this way we can prevent the edges of the leaves or the tips from drying out. For this, it is convenient to spray the leaves frequently with good quality water and at room temperature. The subscriber must be frequent, every month in times of growth but in low quantities. The substrate must not be dry, rather keep it slightly moist. If they are indoors, it is convenient to spray the leaves frequently with good quality water and at room temperature. From time to time it is advisable to clean the leaves with a damp cloth. Do not use products to polish the leaves, at most put a little beer in the water that we use to clean them. The environment must be warm, no more than 22 degrees and no less than 15. All those leaves that deteriorate must be removed at ground level."
-
+ /*este producto ya esta cargado en firebase */
     },
     {
         id: '2',
@@ -37,7 +37,7 @@ const allProducts = [
         name: 'Pink Pot',
         price: `$15`,
         description:"Made of polyethylene, a material highly resistant to pressure and impact. It does not generate hazardous waste in its manufacture and has a low environmental impact. Suitable for outdoors, resistant to water, humidity and UV rays. Does not dry out. Simple to clean. Chemical resistant."
-    },
+    },  /*este producto ya esta cargado en firebase */
     {
         id: '5',
         img: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/979/572/products/beige-182-3113eb01f1d7fd16ca16322699861321-640-0.jpg' ,
