@@ -1,12 +1,14 @@
-  import { useCart } from 'context/CartContext';
+import CartContext from "../../context/CartContext";
+import { useContext } from "react";
+
     
   const ItemCart = ({ id, name, quantity, price }) => {
     
-    const { removeItem } = useCart()
+    const {removeProduct} = useContext(CartContext)
 
     const handleRemoveItem = (e) => {
         e.stopPropagation()
-        removeItem(id)
+        removeProduct(id)
     }
 
     return (

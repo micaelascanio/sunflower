@@ -1,4 +1,3 @@
-import { getProducts, getProductsByCategory } from "../asyncmock"
 import { useState, useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
@@ -26,7 +25,7 @@ const ItemListContainer = (props) => {
         setLoading(true)
 
         const collectionRef = categoryId ? (
-            query(collection(ddbb, 'allProducts'), where('category', '==', 'categoryId'))
+            query(collection(ddbb, 'allProducts'), where('category', '==', categoryId))
         ) : (collection(ddbb, 'allProducts'))
 
         getDocs(collectionRef).then(response => {
