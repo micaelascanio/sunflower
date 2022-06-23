@@ -42,7 +42,9 @@ const ItemListContainer = (props) => {
             setLoading(false)
         })
 
+        
     }, [categoryId])
+
 
     console.log(categoryId)
 

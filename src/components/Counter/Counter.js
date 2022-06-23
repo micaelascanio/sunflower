@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './Counter.css'
 
-/*export default function App () {*/
+
 
 const CounterButton = ({ onAdd, stock, initial = 0 }) => {
 
