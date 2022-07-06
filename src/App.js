@@ -5,6 +5,8 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart/Cart';
+import Checkout from './components/Checkout/Checkout';
+import { NotificationProvider } from './notifications/Notifications'
 
 
 
@@ -13,17 +15,20 @@ function App() {
 
   return (
     <div className="App">
-      <CartProvider>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer title={"Sunflower."} greeting={"Welcome! We love to have you here!"} />} />
-            <Route path="/category/:categoryId" element={<ItemListContainer title={"Sunflower."} greeting={"Welcome! We love to have you here!"} />} />
-            <Route path="/detail/:productId" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<Cart/>} />
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
+      <NotificationProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<ItemListContainer title={"Sunflower."} greeting={"Welcome! We love to have you here!"} />} />
+              <Route path="/category/:categoryId" element={<ItemListContainer title={"Sunflower."} greeting={"Welcome! We love to have you here!"} />} />
+              <Route path="/detail/:productId" element={<ItemDetailContainer />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </NotificationProvider>
     </div>
 
 

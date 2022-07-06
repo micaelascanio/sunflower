@@ -16,6 +16,7 @@ const CounterButton = ({ onAdd, stock, initial = 0 }) => {
             if (counter > 0) setCounter (counter - 1) 
         }
     
+        
     
      return (
             <div>

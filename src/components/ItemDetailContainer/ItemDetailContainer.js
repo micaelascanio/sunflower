@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-            <h3 className="productDetail"> Product detail</h3>
+            <h3 className="productDetail">Product detail</h3>
             < ItemDetail {...product} />
         </>
     )

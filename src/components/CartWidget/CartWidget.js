@@ -2,7 +2,7 @@ import { BsFillCartFill } from "react-icons/bs";
 import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import { Link } from 'react-router-dom'
-
+import "./CartWidget.css"
 
 
 
@@ -14,7 +14,7 @@ const CartWidget = () => {
     
   return (
     <div>
-      <Link to={`/cart`} className= "Option">
+      <Link to={`/cart`} className= "cartWidgetLook">
         <i><BsFillCartFill size={30} />
           {totalQuantity}
         </i>

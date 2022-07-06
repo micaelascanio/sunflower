@@ -42,7 +42,7 @@ const allProducts = [
         id: '5',
         img: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/979/572/products/beige-182-3113eb01f1d7fd16ca16322699861321-640-0.jpg' ,
         category: 'Pots',
-        stock: 15,
+        stock: 10,
         name: 'Nude Pot',
         price: `$17`,
         description:"Made of polyethylene, a material highly resistant to pressure and impact. It does not generate hazardous waste in its manufacture and has a low environmental impact. Suitable for outdoors, resistant to water, humidity and UV rays. Does not dry out. Simple to clean. Chemical resistant."

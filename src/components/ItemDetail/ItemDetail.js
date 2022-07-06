@@ -24,7 +24,7 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
             <h3 className="itemDetailTitle">{name}</h3>
             <img src={img} className="imgDetail" />
             <p className="itemCategory">Category: {category}</p>
-            <p className="itemPrice">{price}</p>
+            <p className="itemPrice">${price}</p>
             <p className="itemDescription">{description}</p>
             {quantityAdded === 0
                 ? <CounterButton onAdd={handleOnAdd} stock={stock} />

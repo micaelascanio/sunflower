@@ -17,7 +17,7 @@ import { useContext } from "react";
         <li>${price}</li>
         <li>{name}</li>
         <li>Subtotal: ${price * quantity}</li>
-        <button  onClick={handleRemoveItem}>Remove</button>      
+        <button  onClick={handleRemoveItem} className = "cartButtons">Remove</button>      
         </ul>                 
                            
                           

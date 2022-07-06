@@ -1,32 +1,35 @@
-import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
-import ItemCart from "../ItemCart/ItemCart";
-import "./Cart.css";
 import { addDoc, collection, writeBatch, getDocs, query, where, documentId } from 'firebase/firestore';
 import { ddbb } from '../../services/firebase/index';
-import { useNotification } from "../../notifications/Notifications"
+import { useNotification } from "../../notifications/Notifications";
+import './Checkout.css';
 
 
-const Cart = () => {
+
+
+
+const Checkout = () => {
 
     const [loading, setLoading] = useState(false)
-    const { clearCart, cart, totalToPay, totalQuantity } = useContext(CartContext)
+    const { clearCart, cart, totalToPay } = useContext(CartContext)
 
     const setNotification = useNotification()
 
-    {/*
+    const [input, setInput] = useState()
 
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+    
     const handleCreateOrder = () => {
 
         setLoading(true)
 
         const objectToOrder = {
-            buyer: {
-                name: "Micaela",
-                phone: "11111alo1111",
-                email: "micaelascanio1@gmail.com"
-            },
+            buyer: input, 
             items: cart,
             total: totalToPay,
         }
@@ -48,27 +51,27 @@ const Cart = () => {
                     const productQuantity = product.quantity
 
                     if (dataDoc.stock >= productQuantity) {
-                        batch.update(doc.ref, { stock: dataDoc.stock - productQuantity })
+                        batch.update(doc.ref, { stock: dataDoc.stock - productQuantity})
                     } else {
                         stockUnavailable.push({ id: doc.id, ...dataDoc })
                     }
                 })
             }).then(() => {
-                if (stockUnavailable.length === 0) {
+                if(stockUnavailable.length === 0) {
                     const collectionRef = collection(ddbb, 'orders')
                     return addDoc(collectionRef, objectToOrder)
                 } else {
-                    return Promise.reject({ type: 'out_of_stock', allProducts: stockUnavailable })
+                    return Promise.reject({type: 'out_of_stock', allProducts: stockUnavailable })
                 }
-            }).then(({ id }) => {
+            }).then(({id}) => {
                 batch.commit()
                 clearCart()
                 setNotification('success', `Order generated successfully. Your order id is:${id}`)
             }).catch(error => {
-                if (error.type === 'out_of_stock') {
-                    setNotification('error', 'Some of the products you chose hasnt stock available')
+                if(error.type === 'out_of_stock') {
+                    setNotification ('error', 'Some of the products you chose hasnt stock available')
                 } else {
-                    console.log(error)
+                    console.log (error)
                 }
             }).finally(() => {
                 setLoading(false)
@@ -77,44 +80,33 @@ const Cart = () => {
 
     }
 
-    if (loading) {
+
+    if(loading) {
         return <h1 className="loader">Generating order...</h1>
     }
 
-*/}
-
-    if (!totalQuantity) {
+    
         return (
             <>
-                <h1 className="productDetail">Your cart is empty</h1>
-                <h2 className="productDetail">Go check our products...</h2>
-
-                <Link to={`/`} className="Option">
-                    <button className="cartButtons">Go to Home</button>
-                </Link>
+                <h1 className="itemDetailTitle">Create Order</h1>
+                
+                <form onSubmit={handleSubmit} className="checkoutForm">
+                    <label className="checkoutLabels">Your name
+                        <input type="text" name="name"  onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                    </label>
+                    <label className="checkoutLabels">Your phone
+                        <input type="number" name="phone" onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                    </label>
+                    <label className="checkoutLabels">Your email
+                        <input type="email" name="email"  onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                    </label>
+                </form>
+                <button type="submit" value="submit" onClick={handleCreateOrder} className="cartButtons">Create order</button>
+                
             </>
         )
     }
 
 
-    return (
-        <>
-            <h1 className="itemDetailTitle">CART</h1>
-            {cart.map(product => <ItemCart key={product.id} {...product} />)}
-            <h2 className="itemDetailTitle">Total ${totalToPay}</h2>
 
-            <button onClick={clearCart} className="cartButtons">Clear cart</button>
-            <Link to={`/checkout`} className="Option">
-                <button className="cartButtons">Check out</button>
-            </Link>
-
-            {/* <button className="cartButtons" onClick={handleCreateOrder}  >Check out</button>*/}
-        </>
-    )
-
-
-
-
-}
-
-export default Cart
+export default Checkout

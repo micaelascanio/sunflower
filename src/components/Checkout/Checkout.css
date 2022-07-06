@@ -1,0 +1,17 @@
+.checkoutInputs {
+    border-color: #C3A492;
+    color: #C3A492;
+    margin: 10px;
+}
+
+.checkoutLabels {
+    color: #C3A492;
+    margin: 10px;
+}
+
+.checkoutForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
