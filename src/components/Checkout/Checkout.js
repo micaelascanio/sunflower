@@ -16,9 +16,11 @@ const Checkout = () => {
 
     const setNotification = useNotification()
 
-    const [input, setInput] = useState()
+    const [name, setName] = useState()
 
-    
+    const [email, setEmail] = useState()   
+
+    const [phone, setPhone] = useState()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,11 +31,12 @@ const Checkout = () => {
         setLoading(true)
 
         const objectToOrder = {
-            buyer: input, 
+            name: name,
+            email: email,
+            phone: phone,
             items: cart,
             total: totalToPay,
         }
-
 
         const batch = writeBatch(ddbb)
 
@@ -85,20 +88,19 @@ const Checkout = () => {
         return <h1 className="loader">Generating order...</h1>
     }
 
-    
         return (
             <>
                 <h1 className="itemDetailTitle">Create Order</h1>
                 
                 <form onSubmit={handleSubmit} className="checkoutForm">
                     <label className="checkoutLabels">Your name
-                        <input type="text" name="name"  onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                        <input type="text" name="name"  onChange={(e) => setName(e.target.value)} className = "checkoutInputs"/>
                     </label>
                     <label className="checkoutLabels">Your phone
-                        <input type="number" name="phone" onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                        <input type="number" name="phone" onChange={(e) => setPhone(e.target.value)} className = "checkoutInputs"/>
                     </label>
                     <label className="checkoutLabels">Your email
-                        <input type="email" name="email"  onChange={(e) => setInput(e.target.value)} className = "checkoutInputs"/>
+                        <input type="email" name="email"  onChange={(e) => setEmail(e.target.value)} className = "checkoutInputs"/>
                     </label>
                 </form>
                 <button type="submit" value="submit" onClick={handleCreateOrder} className="cartButtons">Create order</button>

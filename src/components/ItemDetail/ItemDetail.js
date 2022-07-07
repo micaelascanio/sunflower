@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 
 
+
 const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
 
 
@@ -13,7 +14,6 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
     const { addProducts } = useContext(CartContext)
 
     const handleOnAdd = (quantity) => {
-        console.log(`${quantity} ${name} added to the cart`)
         addProducts({ id, name, price, quantity })
         setQuantityAdded(quantity)
 
@@ -22,7 +22,7 @@ const ItemDetail = ({ id, img, name, category, price, description, stock }) => {
     return (
         <div className="itemDetailCard">
             <h3 className="itemDetailTitle">{name}</h3>
-            <img src={img} className="imgDetail" />
+            <img src={img} className="imgDetail" alt="images" />
             <p className="itemCategory">Category: {category}</p>
             <p className="itemPrice">${price}</p>
             <p className="itemDescription">{description}</p>

@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     const [totalQuantity, setTotalQuantity] = useState(0)
     const [totalToPay, setTotalToPay] = useState(0)
-    console.log(cart)
+    
 
 
 

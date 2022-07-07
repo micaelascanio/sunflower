@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
         const docRef = doc(ddbb, 'allProducts', productId)
 
         getDoc(docRef).then(doc => {
-            console.log(doc)
             const allProductsFormatted = { id: doc.id, ...doc.data() }
             setProduct(allProductsFormatted)
         }).catch(error => {

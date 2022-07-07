@@ -29,7 +29,7 @@ const ItemListContainer = (props) => {
         ) : (collection(ddbb, 'allProducts'))
 
         getDocs(collectionRef).then(response => {
-            console.log(response)
+            
             const allProductsFormatted = response.docs.map(doc => {
                 return { id: doc.id, ...doc.data() }
             })
@@ -45,7 +45,6 @@ const ItemListContainer = (props) => {
     }, [categoryId])
 
 
-    console.log(categoryId)
 
     if (loading) {
         return <h2 className="loader">Loading...</h2>
