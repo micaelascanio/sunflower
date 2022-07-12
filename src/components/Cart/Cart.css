@@ -6,6 +6,7 @@
     font-weight: lighter;
     border-radius: 10px;
     border-color: #F8DFD1;
+    background-color: white;
 }
 .cartButtons:hover {
     padding: 7px;

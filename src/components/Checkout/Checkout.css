@@ -15,3 +15,33 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+.createOrderButton {
+    padding: 7px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #C3A492;
+    font-weight: lighter;
+    border-radius: 10px;
+    border-color: #F8DFD1;
+    background-color: white;
+}
+.createOrderButton:hover {
+    padding: 7px;
+    color: white;
+    font-weight: bolder;
+    border-radius: 10px;
+    border-color: #F8DFD1;
+    background-color: #C3A492;
+}
+
+.disabled:hover {
+  color: #C3A492;
+  font-weight: lighter;
+  background-color: inherit;
+}
+
+.emptyInputText {
+    color: red ;
+    font-size: 10px;
+}

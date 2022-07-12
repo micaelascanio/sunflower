@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
         }).finally(() => {
             setLoading(false)
         })
-
+// eslint-disable-next-line
     }, [])
 
     if (loading) {

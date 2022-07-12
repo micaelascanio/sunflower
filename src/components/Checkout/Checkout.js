@@ -8,7 +8,6 @@ import './Checkout.css';
 
 
 
-
 const Checkout = () => {
 
     const [loading, setLoading] = useState(false)
@@ -18,14 +17,18 @@ const Checkout = () => {
 
     const [name, setName] = useState()
 
-    const [email, setEmail] = useState()   
+    const [email, setEmail] = useState()
 
     const [phone, setPhone] = useState()
+
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
     }
-    
+
+
     const handleCreateOrder = () => {
 
         setLoading(true)
@@ -36,6 +39,7 @@ const Checkout = () => {
             phone: phone,
             items: cart,
             total: totalToPay,
+            date: new Date(),
         }
 
         const batch = writeBatch(ddbb)
@@ -54,27 +58,27 @@ const Checkout = () => {
                     const productQuantity = product.quantity
 
                     if (dataDoc.stock >= productQuantity) {
-                        batch.update(doc.ref, { stock: dataDoc.stock - productQuantity})
+                        batch.update(doc.ref, { stock: dataDoc.stock - productQuantity })
                     } else {
                         stockUnavailable.push({ id: doc.id, ...dataDoc })
                     }
                 })
             }).then(() => {
-                if(stockUnavailable.length === 0) {
+                if (stockUnavailable.length === 0) {
                     const collectionRef = collection(ddbb, 'orders')
                     return addDoc(collectionRef, objectToOrder)
                 } else {
-                    return Promise.reject({type: 'out_of_stock', allProducts: stockUnavailable })
+                    return Promise.reject({ type: 'out_of_stock', allProducts: stockUnavailable })
                 }
-            }).then(({id}) => {
+            }).then(({ id }) => {
                 batch.commit()
                 clearCart()
                 setNotification('success', `Order generated successfully. Your order id is:${id}`)
             }).catch(error => {
-                if(error.type === 'out_of_stock') {
-                    setNotification ('error', 'Some of the products you chose hasnt stock available')
+                if (error.type === 'out_of_stock') {
+                    setNotification('error', 'Some of the products you chose hasnt stock available')
                 } else {
-                    console.log (error)
+                    console.log(error)
                 }
             }).finally(() => {
                 setLoading(false)
@@ -84,30 +88,34 @@ const Checkout = () => {
     }
 
 
-    if(loading) {
+    if (loading) {
         return <h1 className="loader">Generating order...</h1>
     }
 
-        return (
-            <>
-                <h1 className="itemDetailTitle">Create Order</h1>
-                
-                <form onSubmit={handleSubmit} className="checkoutForm">
-                    <label className="checkoutLabels">Your name
-                        <input type="text" name="name"  onChange={(e) => setName(e.target.value)} className = "checkoutInputs"/>
-                    </label>
-                    <label className="checkoutLabels">Your phone
-                        <input type="number" name="phone" onChange={(e) => setPhone(e.target.value)} className = "checkoutInputs"/>
-                    </label>
-                    <label className="checkoutLabels">Your email
-                        <input type="email" name="email"  onChange={(e) => setEmail(e.target.value)} className = "checkoutInputs"/>
-                    </label>
-                </form>
-                <button type="submit" value="submit" onClick={handleCreateOrder} className="cartButtons">Create order</button>
-                
-            </>
-        )
-    }
+
+
+    return (
+        <>
+            <h1 className="itemDetailTitle">Create Order</h1>
+
+            <form onSubmit={handleSubmit} className="checkoutForm">
+                <label className="checkoutLabels">Your name
+                    <input type="text" name="name" onChange={(e) => setName(e.target.value)} className="checkoutInputs" />
+                    {name?.length > 0 ? "" : (<p className="emptyInputText">You must complete the field</p>)}
+                </label>
+                <label className="checkoutLabels">Your phone
+                    <input type="number" name="phone" onChange={(e) => setPhone(e.target.value)} className="checkoutInputs" />
+                    {phone?.length > 0 ? "" : (<p className="emptyInputText">You must complete the field</p>)}
+                </label>
+                <label className="checkoutLabels">Your email
+                    <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className="checkoutInputs" />
+                    {email?.length > 0 ? "" : (<p className="emptyInputText">You must complete the field</p>)}
+                </label>
+                <button disabled={!name?.length > 0 || !phone?.length > 0 || !email?.length > 0} type="submit" value="submit" onClick={handleCreateOrder} className={!name?.length > 0 || !phone?.length > 0 || !email?.length > 0 ? "createOrderButton disabled" : "createOrderButton"}>Create order</button>
+            </form>
+        </>
+    )
+}
 
 
 
